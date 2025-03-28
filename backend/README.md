@@ -49,3 +49,42 @@ The `/user/register` endpoint allows new users to register. It validates the inp
   ]
 }
 ```
+
+## /user/login Endpoint Documentation
+
+### Description
+The `/user/login` endpoint allows an existing user to authenticate using their email and password.
+
+### Request Body
+- `email` (string): Must be a valid email address.
+- `password` (string): Must be at least 5 characters long.
+
+### Response Status Codes
+- **200 OK:** Login successful. Returns a JSON object with the JWT token and the user.
+- **400 Bad Request:** Validation errors.
+- **401 Unauthorized:** Invalid email or password.
+
+### Example Request
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "secret123"
+}
+```
+
+### Example Response (Success)
+```json
+{
+  "token": "<JWT Token>",
+  "user": {
+    // ...user details...
+  }
+}
+```
+
+### Example Response (Error)
+```json
+{
+  "message": "Invalid credentials"
+}
+```
