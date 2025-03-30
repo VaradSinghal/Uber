@@ -88,3 +88,47 @@ The `/user/login` endpoint allows an existing user to authenticate using their e
   "message": "Invalid credentials"
 }
 ```
+
+## /user/profile Endpoint Documentation
+
+### Description
+The `/user/profile` endpoint returns the authenticated user's profile information. This endpoint requires a valid JWT token via an Authorization header or a cookie.
+
+### Request
+- Method: GET
+- Headers: 
+  - `Authorization: Bearer <JWT Token>` or cookie `token` must be present.
+
+### Response Status Codes
+- **200 OK:** Returns the user profile.
+- **401 Unauthorized:** When authentication fails.
+
+### Example Response (Success)
+```json
+{
+  "user": {
+    // ...user details...
+  }
+}
+```
+
+## /user/logout Endpoint Documentation
+
+### Description
+The `/user/logout` endpoint logs out the authenticated user. It clears the token cookie and blacklists the token to prevent further usage.
+
+### Request
+- Method: GET
+- Headers: 
+  - `Authorization: Bearer <JWT Token>` or cookie `token` must be present.
+
+### Response Status Codes
+- **200 OK:** Logout successful.
+- **401 Unauthorized:** When authentication is invalid.
+
+### Example Response (Success)
+```json
+{
+  "message": "Logout successful"
+}
+```
